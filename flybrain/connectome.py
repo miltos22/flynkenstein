@@ -7,8 +7,8 @@ import pyarrow as pa
 import pyarrow.compute as pc
 import pyarrow.feather as feather
 from . import params
-DATA_DIR = '/run/media/miltos/Ironwolf/Downloads/malecns_v1.0'
-DEFAULT_PATH = '/run/media/miltos/Linuxaddon/AI_Workspace/Flybrain/cache/connectome_v1.npz'
+DATA_DIR = os.environ.get('FLYBRAIN_DATA', 'data/malecns_v1.0')
+DEFAULT_PATH = os.path.join(os.environ.get('FLYBRAIN_CACHE', 'cache'), 'connectome_v1.npz')
 ANN_FEATHER = os.path.join(DATA_DIR, 'body-annotations-male-cns-v1.0-minconf-0.5.feather')
 NT_FEATHER = os.path.join(DATA_DIR, 'body-neurotransmitters-male-cns-v1.0.feather')
 W_FEATHER = os.path.join(DATA_DIR, 'connectome-weights-male-cns-v1.0-minconf-0.5.feather')

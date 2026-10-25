@@ -1,12 +1,13 @@
 import json
 import math
+import os
 import re
 import time
 import numpy as np
 import torch
 from . import cxmap, params as P, protocols
 from .world import World
-ANNOT = '/run/media/miltos/Ironwolf/Downloads/malecns_v1.0/body-annotations-male-cns-v1.0-minconf-0.5.feather'
+ANNOT = os.environ.get('FLYBRAIN_ANNOT', os.path.join(os.environ.get('FLYBRAIN_DATA', 'data/malecns_v1.0'), 'body-annotations-male-cns-v1.0-minconf-0.5.feather'))
 
 def pen_sides(conn, annot_path=ANNOT):
     import pyarrow.feather as pf

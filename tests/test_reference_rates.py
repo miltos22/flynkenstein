@@ -22,7 +22,7 @@ def test_pacemakers_cross_threshold_at_E_L_max():
 
 def xfail_dan_tonic_3hz_at_E_L_base():
     r = isolated_rate(5, P.CLASS['E_L_base_mV'][5])
-    assert abs(r - 3.0) < 0.5, f'class VI at -49.2 mV fires {r:.2f} Hz, spec says 3.0'
+    assert abs(r - 3.0) < 0.5, f'class VI at -49.2 mV fires {r:.2f} Hz, expected 3.0'
 
 def xfail_class_I_reaches_target_within_E_L_box():
     r = isolated_rate(0, P.CLASS['E_L_max_mV'][0])
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         elif name.startswith('xfail_'):
             try:
                 fn()
-                print('XPASS', name, '- spec claim now holds; update SPEC_FINDINGS F7')
+                print('XPASS', name, '- expected claim now holds')
             except AssertionError as e:
-                print('XFAIL', name, '-', e, '(SPEC_FINDINGS F7)')
+                print('XFAIL', name, '-', e)
     sys.exit(1 if fails else 0)

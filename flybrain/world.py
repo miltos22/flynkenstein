@@ -1,9 +1,10 @@
 import math
+import os
 import zlib
 import numpy as np
 import torch
 from . import params as P
-ANNOT = '/run/media/miltos/Ironwolf/Downloads/malecns_v1.0/body-annotations-male-cns-v1.0-minconf-0.5.feather'
+ANNOT = os.environ.get('FLYBRAIN_ANNOT', os.path.join(os.environ.get('FLYBRAIN_DATA', 'data/malecns_v1.0'), 'body-annotations-male-cns-v1.0-minconf-0.5.feather'))
 
 class World:
 

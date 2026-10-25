@@ -10,7 +10,7 @@ T = lambda v: torch.tensor([v], dtype=torch.float64)
 
 def close(got, name, atol):
     want = CHK[name][0]
-    assert abs(got - want) <= atol, f'{name}: got {got:.5f}, spec {want} (line {CHK[name][2]})'
+    assert abs(got - want) <= atol, f'{name}: got {got:.5f}, spec {want}'
 
 def test_gating_values():
     close(float(R.B_Mg(T(-45.5))), 'B_at_-45.5mV', 0.001)

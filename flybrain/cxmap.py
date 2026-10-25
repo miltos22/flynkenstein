@@ -1,9 +1,10 @@
 import math
+import os
 import re
 from pathlib import Path
 import numpy as np
 CACHE = Path(__file__).resolve().parents[1] / 'cache'
-ANNOT = '/run/media/miltos/Ironwolf/Downloads/malecns_v1.0/body-annotations-male-cns-v1.0-minconf-0.5.feather'
+ANNOT = os.environ.get('FLYBRAIN_ANNOT', os.path.join(os.environ.get('FLYBRAIN_DATA', 'data/malecns_v1.0'), 'body-annotations-male-cns-v1.0-minconf-0.5.feather'))
 
 def circmean_deg(a):
     r = np.radians(np.asarray(a, dtype=np.float64))

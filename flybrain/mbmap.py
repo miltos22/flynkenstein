@@ -1,3 +1,4 @@
+import os
 import re
 LOBES = {'y': ('g', 5), "a'": ("a'", 3), "B'": ("b'", 2), "b'": ("b'", 2), 'a': ('a', 3), 'B': ('b', 2), 'b': ('b', 2)}
 COMPARTMENTS = [f'g{i}' for i in range(1, 6)] + [f"a'{i}" for i in range(1, 4)] + [f"b'{i}" for i in range(1, 3)] + [f'a{i}' for i in range(1, 4)] + [f'b{i}' for i in range(1, 3)]
@@ -32,8 +33,8 @@ def compartments_of(type_name, instance):
     return OVERRIDE.get(type_name) or compartments(instance)
 LOBE_OF_ROI = {'gL': 'g', 'aL': 'a', 'bL': 'b', "a'L": "a'", "b'L": "b'"}
 LOBE_OF_COMP = [c[:-1] for c in COMPARTMENTS]
-ANNOT = '/run/media/miltos/Ironwolf/Downloads/malecns_v1.0/body-annotations-male-cns-v1.0-minconf-0.5.feather'
-KC_MBON_ROI = '/run/media/miltos/Linuxaddon/AI_Workspace/Flybrain/cache/kc_mbon_roi.parquet'
+ANNOT = os.environ.get('FLYBRAIN_ANNOT', os.path.join(os.environ.get('FLYBRAIN_DATA', 'data/malecns_v1.0'), 'body-annotations-male-cns-v1.0-minconf-0.5.feather'))
+KC_MBON_ROI = os.path.join(os.environ.get('FLYBRAIN_CACHE', 'cache'), 'kc_mbon_roi.parquet')
 LTM_AV_TYPES, LTM_APP_TYPES = (('PPL105', 'PPL106'), ('PAM11',))
 VETO_AV_TYPE, VETO_APP_TYPE = ('MBON01', 'MBON07')
 

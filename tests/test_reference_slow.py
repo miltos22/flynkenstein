@@ -16,7 +16,7 @@ def test_tyson_period_is_24h():
     assert len(ups) >= 3, f'no sustained oscillation (crossings {len(ups)})'
     period = (ups[-1] - ups[0]) / (len(ups) - 1) * dt
     want = P.SPEC_CHECKS['circ_period_product'][0]
-    assert abs(period - want) / want < 0.01, f'period {period:.0f} s vs spec {want:.0f} s'
+    assert abs(period - want) / want < 0.01, f'period {period:.0f} s vs expected {want:.0f} s'
 if __name__ == '__main__':
     fails = 0
     for name, fn in list(globals().items()):
